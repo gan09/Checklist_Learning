@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -21,6 +22,7 @@ import com.example.desmond.checklistlearning.TaskTable.TaskDbHelper;
 
 import java.util.ArrayList;
 
+import static android.R.attr.checked;
 import static android.R.attr.id;
 
 public class MainActivity extends AppCompatActivity {
@@ -80,6 +82,13 @@ public class MainActivity extends AppCompatActivity {
 
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    public void checked(View view){ //checkbox is implemented (success)
+        boolean check = ((CheckBox) view).isChecked();
+        if(check){
+            deleteTask(view);
         }
     }
 
