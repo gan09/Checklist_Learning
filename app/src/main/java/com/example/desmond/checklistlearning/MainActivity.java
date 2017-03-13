@@ -89,6 +89,10 @@ public class MainActivity extends AppCompatActivity {
         boolean check = ((CheckBox) view).isChecked();
         if(check){
             deleteTask(view);
+
+        }
+        else {
+            
         }
     }
 
