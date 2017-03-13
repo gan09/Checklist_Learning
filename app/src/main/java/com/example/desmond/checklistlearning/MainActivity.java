@@ -5,6 +5,8 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Paint;
+import android.graphics.PaintFlagsDrawFilter;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -88,11 +90,10 @@ public class MainActivity extends AppCompatActivity {
     public void checked(View view){ //checkbox is implemented (success)
         boolean check = ((CheckBox) view).isChecked();
         if(check){
-            deleteTask(view);
-
+            strikethrough();
         }
         else {
-            
+            undostrike();
         }
     }
 
@@ -133,5 +134,15 @@ public class MainActivity extends AppCompatActivity {
 
         cursor.close();
         db.close();
+    }
+
+    private void strikethrough(){
+        TextView text = (TextView) findViewById(R.id.task_title);
+        text.setPaintFlags(text.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+    }
+
+    private void undostrike(){
+        TextView text = (TextView) findViewById(R.id.task_title);
+        text.setPaintFlags(text.getPaintFlags() & (~Paint.STRIKE_THRU_TEXT_FLAG));
     }
 }
